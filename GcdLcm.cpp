@@ -1,24 +1,8 @@
+#include <bits/stdc++.h>
 #include <iostream>
+#include <algorithm>
+#include <boost/math/common_factor.hpp>
 using namespace std;
-
-int gcd(int a,int b)
-{
-    int result = min(a, b); 
-    while (result > 0) {
-        if (a % result == 0 && b % result == 0) {
-            break;
-        }
-        result--;
-    }
-    return result*result;
-    
-}
-
-int lcm(int a,int b)
-{
-    return ((a / gcd(a, b)) * b)*((a / gcd(a, b)) * b);
-}
-
 int main() 
 {
     int t;
@@ -32,8 +16,9 @@ int main()
         {
             for(int j=1;(j*j)<=n;j++)
             {
-                
-                if(((i*i)+(j*j)+gcd(i,j)+lcm(i,j))==n)
+                int x=(__gcd(i,j));
+                int y=(boost::math::lcm(i,j));
+                if(((i*i)+(j*j)+(x*x)+(y*y))==n)
                   {
                   if(i==j)
                   cnt++;
@@ -42,18 +27,13 @@ int main()
                   }
                  else
                  continue;
-            
             }
-                
-            
         }
         if(cnt%2==0)
         cout<<cnt/2<<endl;
         else
         cout<<cnt<<endl;
-    
     }
-	// your code goes here
 	return 0;
 }
 
