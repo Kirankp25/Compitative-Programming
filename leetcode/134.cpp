@@ -22,7 +22,9 @@ public:
                 c_gas=0;
             }
         }
-        return (t_gas<t_cost)?-1:s_pnt;     
+        //return (t_gas<t_cost)?-1:s_pnt;
+        if(t_gas<t_cost) return -1;
+        else return s_pnt;     
     
     }
 };
